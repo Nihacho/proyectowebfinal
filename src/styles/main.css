@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   LANDING PAGE STYLES
+   ========================================================================== */
+
+.landing-app {
+  background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #16213e);
+  min-height: 200vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.content-layer {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Mantener la luna centrada y fija mientras haces scroll en landing */
+#moon {
+  position: fixed;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  /* La rotación y escala se siguen aplicando desde el JS */
+}
+
+.moon {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, #f5f5dc, #e6e6fa);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.moon.clickable {
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+.moon.clickable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 80px rgba(0, 255, 255, 0.5);
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 50px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 80px rgba(0, 255, 255, 0.6); }
+}
+
+.moon-surface {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+}
+
+.crater {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+.crater-1 {
+  width: 20px;
+  height: 20px;
+  top: 30%;
+  left: 40%;
+}
+
+.crater-2 {
+  width: 15px;
+  height: 15px;
+  top: 60%;
+  right: 30%;
+}
+
+.crater-3 {
+  width: 12px;
+  height: 12px;
+  bottom: 25%;
+  left: 25%;
+}
+
+#main-title {
+  position: fixed;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+  /* La escala, opacidad y sombra se animan desde JS */
+  transition: color 0.3s, text-shadow 0.3s, opacity 0.3s, filter 0.3s;
+}
+
+.title-container {
+  margin-top: 0;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.title-container.clickable {
+  cursor: pointer;
+}
+
+.title-container.clickable:hover .main-title {
+  color: #00ffff;
+  text-shadow: 0 0 20px #00ffff;
+}
+
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: white;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  font-weight: 700;
+}
+
+.final-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+.final-moon {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #f5f5dc, #e6e6fa);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 100px rgba(0, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto 2rem;
+}
+
+.final-moon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 150px rgba(0, 255, 255, 0.8);
+}
+
+.final-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #00ffff;
+  opacity: 0;
+  transform: translateY(20px);
+  font-weight: 700;
+}
+
+.landing-indicator {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  animation: bounce 2s infinite;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ==========================================================================
+   MENU PAGE STYLES
+   ========================================================================== */
+
+.menu-app {
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  min-height: 100vh;
+  color: white;
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand h2 {
+  color: #00ffff;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+
+.nav-menu button {
+  background: transparent;
+  border: 2px solid transparent;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-menu button:hover {
+  border-color: #00ffff;
+  color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.nav-menu button.active {
+  background: #00ffff;
+  color: #1a1a2e;
+  border-color: #00ffff;
+}
+
+.main-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-content h2 {
+  color: #00ffff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ==========================================================================
+   RESERVATION FORM STYLES
+   ========================================================================== */
+
+.reservation-form-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  color: #00ffff;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1rem;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ffff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #00ffff, #0066cc);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-message {
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.submit-message.success {
+  background: rgba(0, 255, 0, 0.2);
+  border: 1px solid rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+}
+
+.submit-message.error {
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.5);
+  color: #ff6b6b;
+}
+
+/* ==========================================================================
+   CONTACT STYLES
+   ========================================================================== */
+
+.contact-info {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.contact-info p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   CARDS STYLES
+   ========================================================================== */
+
+.combos-grid,
+.cocktails-grid,
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.combo-card,
+.cocktail-card,
+.service-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.combo-card:hover,
+.cocktail-card:hover,
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.combo-card h3,
+.cocktail-card h3,
+.service-card h3 {
+  color: #00ffff;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ff00;
+  display: block;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   INFO STYLES
+   ========================================================================== */
+
+.info-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.info-content h3 {
+  color: #00ffff;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.info-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-content li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.info-content li:before {
+  content: "→";
+  color: #00ffff;
+  position: absolute;
+  left: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .final-title {
+    font-size: 2rem;
+  }
+  
+  .moon {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .final-moon {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .combos-grid,
+  .cocktails-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+}
