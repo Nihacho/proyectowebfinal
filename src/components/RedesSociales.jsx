@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaInstagram, FaTiktok, FaYoutube, FaWhatsapp } from 'react-icons/fa';
-import '../styles/redesSociales.css'; // Asegúrate de tener este archivo CSS para estilos
+import '../styles/redesSociales.css';
 
 const redes = [
   {
@@ -32,20 +32,35 @@ const redes = [
 const RedesSociales = () => {
   return (
     <div className="redes-container">
-      {redes.map(({ name, icon, url, description }) => (
-        <a
-          key={name}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="redes-card"
-          aria-label={`Enlace a ${name}`}
-        >
-          <div className="redes-icon">{icon}</div>
-          <h3 className="redes-title">{name}</h3>
-          <p className="redes-description">{description}</p>
-        </a>
-      ))}
+      <h2 className="embajador-title">Nuestro Embajador</h2>
+      <div className="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/ve3AipSQZxg?si=FzPjyM3HA16KNq-3&controls=1"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+
+      <h2 className="redes-titulo">Nuestras Redes Sociales</h2>
+
+      <div className="redes-cards-wrapper">
+        {redes.map(({ name, icon, url, description }) => (
+          <a
+            key={name}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="redes-card"
+            aria-label={`Enlace a ${name}`}
+          >
+            <div className="redes-icon">{icon}</div>
+            <h3 className="redes-title">{name}</h3>
+            <p className="redes-description">{description}</p>
+          </a>
+        ))}
+      </div>
     </div>
   );
 };

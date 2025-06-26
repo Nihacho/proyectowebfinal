@@ -9,6 +9,7 @@ import Combos from './components/Combos';
 import CartaCocteles from './components/CartaCocteles';
 import Reservas from './components/Reservas';
 import RedesSociales from './components/RedesSociales';
+import Footer from './components/Footer';
 import './styles/main.css';
 
 const Landing = () => {
@@ -90,6 +91,7 @@ const Landing = () => {
 const AppRoutes = () => {
   const location = useLocation();
   const showNavbar = location.pathname !== '/';
+  const showFooter = location.pathname !== '/';
 
   return (
     <>
@@ -102,6 +104,7 @@ const AppRoutes = () => {
         <Route path="/reservas" element={<Reservas />} />
         <Route path="/redes-sociales" element={<RedesSociales />} />
       </Routes>
+      {showFooter && <Footer />}
     </>
   );
 };
