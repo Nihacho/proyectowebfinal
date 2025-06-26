@@ -7,7 +7,7 @@
 }
 
 /* ==========================================================================
-   LANDING PAGE STYLES
+   LANDING PAGE STYLES (NO TOCAR LUNA)
    ========================================================================== */
 
 .landing-app {
@@ -237,8 +237,6 @@
 .nav-menu {
   display: flex;
   list-style: none;
-  margin: 0;
-  padding: 0;
   gap: 1rem;
 }
 
@@ -279,112 +277,9 @@
 }
 
 /* ==========================================================================
-   RESERVATION FORM STYLES
+   CONTACT & INFO STYLES
    ========================================================================== */
-
-.reservation-form-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 2rem;
-  border-radius: 15px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.reservation-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.form-group label {
-  margin-bottom: 0.5rem;
-  color: #00ffff;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 0.75rem;
-  border: 2px solid rgba(0, 255, 255, 0.3);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 1rem;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #00ffff;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-}
-
-.submit-btn {
-  background: linear-gradient(45deg, #00ffff, #0066cc);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 25px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-}
-
-.submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
-}
-
-.submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.submit-message {
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.submit-message.success {
-  background: rgba(0, 255, 0, 0.2);
-  border: 1px solid rgba(0, 255, 0, 0.5);
-  color: #00ff00;
-}
-
-.submit-message.error {
-  background: rgba(255, 0, 0, 0.2);
-  border: 1px solid rgba(255, 0, 0, 0.5);
-  color: #ff6b6b;
-}
-
-/* ==========================================================================
-   CONTACT STYLES
-   ========================================================================== */
-
-.contact-info {
+.contact-info, .info-content {
   background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
   border-radius: 15px;
@@ -394,6 +289,30 @@
 .contact-info p {
   margin: 1rem 0;
   font-size: 1.1rem;
+}
+
+.info-content h3 {
+  color: #00ffff;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.info-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-content li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.info-content li:before {
+  content: "→";
+  color: #00ffff;
+  position: absolute;
+  left: 0;
 }
 
 /* ==========================================================================
@@ -442,41 +361,6 @@
 }
 
 /* ==========================================================================
-   INFO STYLES
-   ========================================================================== */
-
-.info-content {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-}
-
-.info-content h3 {
-  color: #00ffff;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.info-content ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.info-content li {
-  padding: 0.5rem 0;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.info-content li:before {
-  content: "→";
-  color: #00ffff;
-  position: absolute;
-  left: 0;
-}
-
-/* ==========================================================================
    RESPONSIVE STYLES
    ========================================================================== */
 
@@ -507,10 +391,6 @@
   .nav-menu {
     flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  .form-row {
-    grid-template-columns: 1fr;
   }
   
   .combos-grid,

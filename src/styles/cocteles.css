@@ -1,0 +1,184 @@
+/* cartaCocteles.css - Estilo lunar adaptado sin botón, con fondo oscuro */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --primary-glow: rgba(148, 163, 184, 0.2);
+  --accent: #60a5fa;
+  --highlight: #34d399;
+  --dark-bg: #0f172a;
+  --dark-bg-alt: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --gold: #fbbf24;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fade-in {
+  animation: fadeInScale 0.8s ease-out both;
+}
+
+.carta-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.coctel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #f8fafc, var(--accent), var(--highlight));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 16px rgba(59,130,246,0.18);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.cocteles-section {
+  margin-bottom: 4rem;
+}
+
+.section-header {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+.cocteles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.coctel-card {
+  background: var(--dark-bg-alt);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  animation: fadeInScale 0.6s ease-out both;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.coctel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+.special-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, var(--gold), #f59e0b);
+  color: var(--dark-bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(251,191,36,0.3);
+}
+
+.coctel-icon-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.coctel-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 4px rgba(255,255,255,0.1));
+}
+
+.coctel-content {
+  text-align: center;
+}
+
+.coctel-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.coctel-description {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--highlight);
+  font-weight: 500;
+}
+
+.coctel-ingredients {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.coctel-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coctel-price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--gold), #f59e0b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(251,191,36,0.10), 0 2px 8px rgba(251,191,36,0.13);
+}
+
+/* Animaciones */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .coctel-title {
+    font-size: 1.8rem;
+  }
+
+  .section-header {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .coctel-card {
+    padding: 1rem;
+  }
+
+  .coctel-price {
+    font-size: 1.2rem;
+  }
+}
